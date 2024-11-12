@@ -1,0 +1,16 @@
+<StackLayout>
+    <GridLayout rows="auto" columns="*, *, *" class="mb-4">
+        <StackLayout col="0" class="p-2">
+            <Label text="{{ engineHealth + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+            <Label text="Engine" class="text-center text-gray-600"/>
+        </StackLayout>
+        <StackLayout col="1" class="p-2">
+            <Label text="{{ oilLife + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+            <Label text="Oil Life" class="text-center text-gray-600"/>
+        </StackLayout>
+        <StackLayout col="2" class="p-2">
+            <Label text="{{ batteryHealth + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+            <Label text="Battery" class="text-center text-gray-600"/>
+        </StackLayout>
+    </GridLayout>
+</StackLayout>

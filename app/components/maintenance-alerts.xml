@@ -1,0 +1,12 @@
+<StackLayout>
+    <Label text="Maintenance Alerts" class="text-xl font-bold mb-2"/>
+    <ListView items="{{ alerts }}" class="list-group" height="300">
+        <ListView.itemTemplate>
+            <StackLayout class="bg-white p-4 mb-2 rounded">
+                <Label text="{{ component }}" class="font-bold"/>
+                <Label text="{{ message }}" textWrap="true" class="text-gray-600"/>
+                <Label text="{{ 'Due: ' + dueDate }}" class="text-sm text-gray-500"/>
+            </StackLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</StackLayout>

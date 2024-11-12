@@ -1,0 +1,5 @@
+<StackLayout class="bg-white rounded-lg p-4 mb-4 shadow">
+    <Label text="Current Mileage" class="text-lg text-gray-600"/>
+    <Label text="{{ mileage + ' miles' }}" class="text-2xl font-bold text-blue-600"/>
+    <Label text="{{ 'Next Service: ' + nextServiceDate }}" class="text-gray-500"/>
+</StackLayout>

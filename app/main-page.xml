@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Car Health Monitor" class="bg-blue-600 text-white">
+        <NavigationButton visibility="collapsed" />
+        <ActionItem tap="{{ onLogout }}" ios.position="right" android.position="actionBar">
+            <Label text="Logout" class="text-white p-2" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout>
+        <ScrollView>
+            <StackLayout class="p-4">
+                <!-- Health Overview Component -->
+                <GridLayout rows="auto" columns="*, *, *" class="mb-4">
+                    <StackLayout col="0" class="p-2">
+                        <Label text="{{ carData.engineHealth + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+                        <Label text="Engine" class="text-center text-gray-600"/>
+                    </StackLayout>
+                    <StackLayout col="1" class="p-2">
+                        <Label text="{{ carData.oilLife + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+                        <Label text="Oil Life" class="text-center text-gray-600"/>
+                    </StackLayout>
+                    <StackLayout col="2" class="p-2">
+                        <Label text="{{ carData.batteryHealth + '%' }}" class="text-2xl text-center text-blue-600 font-bold"/>
+                        <Label text="Battery" class="text-center text-gray-600"/>
+                    </StackLayout>
+                </GridLayout>
+
+                <!-- Welcome Message -->
+                <StackLayout class="bg-blue-100 p-4 rounded-lg mb-4">
+                    <Label text="{{ 'Welcome, ' + userName }}" class="text-lg font-bold text-blue-800"/>
+                    <Label text="{{ 'Last login: ' + lastLoginDate }}" class="text-sm text-blue-600"/>
+                </StackLayout>
+
+                <!-- Mileage Info -->
+                <StackLayout class="bg-white rounded-lg p-4 mb-4 shadow">
+                    <Label text="Current Mileage" class="text-lg text-gray-600"/>
+                    <Label text="{{ carData.mileage + ' miles' }}" class="text-2xl font-bold text-blue-600"/>
+                    <Label text="{{ 'Next Service: ' + nextServiceDate }}" class="text-gray-500"/>
+                </StackLayout>
+
+                <!-- Maintenance Alerts -->
+                <Label text="Maintenance Alerts" class="text-xl font-bold mb-2"/>
+                <ListView items="{{ alerts }}" class="list-group" height="300">
+                    <ListView.itemTemplate>
+                        <StackLayout class="bg-white p-4 mb-2 rounded">
+                            <GridLayout columns="auto, *" rows="auto, auto, auto">
+                                <Label col="0" row="0" text="{{ component }}" class="font-bold"/>
+                                <Label col="0" row="1" colSpan="2" text="{{ message }}" textWrap="true" class="text-gray-600"/>
+                                <Label col="0" row="2" text="{{ 'Due: ' + dueDate }}" class="text-sm text-gray-500"/>
+                                <Label col="1" row="0" text="{{ severity }}" 
+                                    class="{{ severity === 'high' ? 'text-red-500' : (severity === 'medium' ? 'text-orange-500' : 'text-green-500') }}"
+                                    horizontalAlignment="right"/>
+                            </GridLayout>
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Button text="Schedule Service" tap="{{ scheduleService }}" class="bg-blue-600 text-white font-bold py-4 rounded-lg mt-4"/>
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator busy="{{ isLoading }}" class="activity-indicator"/>
+    </GridLayout>
+</Page>
